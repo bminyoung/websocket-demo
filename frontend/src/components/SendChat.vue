@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -33,7 +32,9 @@ export default {
     //this.$socket.on('서버에서 받을 이벤트명', 데이터);
 
     sendMsg() {
-      this.$socket.emit('chat', this.msg);
+      // this.$socket.emit('chat', this.msg);
+      console.log(`sendChat: ${this.message}`);
+      this.$emit("send-message", this.message);
       this.message = "";
     },
   },

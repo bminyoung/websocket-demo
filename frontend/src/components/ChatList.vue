@@ -2,14 +2,26 @@
   <v-list>
     <transition-group name="list">
       <div v-for="(msg, index) in messages" v-bind:key="index">
-        <v-list-tile>
-          <v-list-tile-action>
-            <span>{{msg.from.name}}</span>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{msg.msg}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-list-item>
+          <v-list-item-action>
+            <label>{{ msg.userId }} : </label>
+          </v-list-item-action>
+
+          <v-list-item-content>
+            <v-textarea
+              :value="msg.content"
+              label="msg.userId"
+              readonly
+              dense
+              rows="1"
+              outlined
+              auto-grow
+              hide-details
+            >
+              <template v-slot:label>{{ msg.userId }}</template>
+            </v-textarea>
+          </v-list-item-content>
+        </v-list-item>
 
         <v-divider></v-divider>
       </div>
@@ -19,11 +31,8 @@
 
 <script>
 export default {
-  props: [
-    'messages'
-  ],
+  props: ["messages"],
 };
 </script>
 
-<style>
-</style>
+<style></style>
